@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import sequelize from "./config/database";
+import Tour from "./models/tour.model";
 dotenv.config();
 sequelize;
 
@@ -12,8 +13,18 @@ const port: number | string = process.env.PORT || 3000;
 app.set("views", "./views");
 app.set("view engine", "pug");
 
-app.get("/tours", (req: Request, res: Response) => {
-    res.render("client/pages/tours/index");
+app.get("/tours", async (req: Request, res: Response) => {
+  // select * from tours where deleted = "false" and status = "acctive"
+
+  const tours = await Tour.findAll({
+    where: {
+      deleted: false,
+      status: "active"
+    },
+    raw: true
+  })
+  console.log(tours);
+  res.render("client/pages/tours/index");
 });
 
 
