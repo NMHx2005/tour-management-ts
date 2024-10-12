@@ -16,7 +16,7 @@ app.set("view engine", "pug");
 
 routesClient(app);
 
-
+app.use(express.static("public"));
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
