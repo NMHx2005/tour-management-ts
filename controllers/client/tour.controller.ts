@@ -61,8 +61,9 @@ export const detail = async (req, res) => {
         tour["images"] = JSON.parse(tour["images"]);
     } 
 
-    tour["price_special"] = (1 - tour["discount"]/100 * tour["price"]);
+    tour["price_special"] = tour["price"] * (1 - tour["discount"] / 100);
     tour["price_special"] = parseInt(tour["price_special"]);
+
 
 
     res.render("client/pages/tours/detail", {

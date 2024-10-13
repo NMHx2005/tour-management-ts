@@ -24,6 +24,17 @@ const alertAddCartSusscess = () => {
 }
 // End Show Alert
 
+// Hiển thị số lượng sản phẩm vào mini cart
+const showMiniCart = () => {
+    const miniCart = document.querySelector("[mini-cart]"); // Lấy ra cái mini cart
+
+    if (miniCart) { // Nếu cái mini cart tồn tại
+        const cart = JSON.parse(localStorage.getItem(cart)); // Lất ra cart đã được lưu trong localStorage để tính được số lượng sản phẩm trong giỏ hàng
+        miniCart.innerHTML = cart.length;        
+    }
+}
+showMiniCart(); // gọi lại để nó được thực thi
+// Hết Hiển thị số lượng sản phẩm vào mini cart
 
 
 // Giỏ hàng
@@ -61,7 +72,9 @@ if(formAddToCart) { // Nếu tồn tại cái này thì chạy vào đây
             }
             localStorage.setItem("cart", JSON.stringify(cart)); // sau khi push thêm tour mới hoặc cập nhật thì nó sẽ được lưu lại vào localStorage và được chuyển thành JSON để được lưu vào.
         
-            alertAddCartSusscess();
+            alertAddCartSusscess(); // Sau khi thêm vào giỏ hàng thì nó hiện ra thông báo đã thêm vào giỏ hàng thành công
+
+            showMiniCart(); // Sau khi thêm xong thì show lại số lượng tour vào mini cart
         }
     })
 }
