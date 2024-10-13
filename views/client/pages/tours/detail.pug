@@ -6,12 +6,14 @@ block main
       .row
         .col-6
           .inner-images
-            .inner-image
-              img(src="https://backend.daca.vn/assets/tour/images/tour-ha-long.jpg")
-            .inner-image
-              img(src="https://backend.daca.vn/assets/tour/images/tour-ha-long-2.jpg")
-            .inner-image
-              img(src="https://backend.daca.vn/assets/tour/images/tour-ha-long-3.jpg")
+            div(class="swiper tour-images")
+              .swiper-wrapper
+                each image in tour.images
+                  .swiper-slide
+                    .inner-image
+                      img(src=image)
+              .swiper-button-next
+              .swiper-button-prev
         
         .col-6
           .inner-title #{tour.title}
