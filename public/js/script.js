@@ -11,6 +11,21 @@ if(tourImages) {
 // End tour-images
 
 
+// Show Alert
+const alertAddCartSusscess = () => {
+    const elementAlert = document.querySelector("[alert-add-cart-susscess]"); // Lấy ra phần tử show
+    if(elementAlert) { // Nếu tồn tại phần tử đó thì chạy vào đây
+        elementAlert.classList.remove("alert-hidden"); // Loại bỏ class alert-hidden của phần tử đó để nó xuất hiện ra
+
+        setTimeout(() => {
+            elementAlert.classList.add("alert-hidden"); // Thêm class alert-hidden vào phần tử đó để nó ẩn đi
+        }, 3000);
+    }
+}
+// End Show Alert
+
+
+
 // Giỏ hàng
 const cart = localStorage.getItem("cart");
 
@@ -45,8 +60,9 @@ if(formAddToCart) { // Nếu tồn tại cái này thì chạy vào đây
                 })
             }
             localStorage.setItem("cart", JSON.stringify(cart)); // sau khi push thêm tour mới hoặc cập nhật thì nó sẽ được lưu lại vào localStorage và được chuyển thành JSON để được lưu vào.
+        
+            alertAddCartSusscess();
         }
     })
 }
-
 // Hết giỏ hàng
