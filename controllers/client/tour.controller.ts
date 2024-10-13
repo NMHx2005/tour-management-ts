@@ -39,3 +39,20 @@ export const index = async (req: Request, res: Response) => {
         tours: tours
     });
 }
+
+
+
+// [GET] /tour/detail/:slugTour
+export const detail = async (req, res) => {
+    // lấy ra slug đươc gủi lên từ bên fe
+    const slugTour = req.params.slugTour;
+
+    console.log(slugTour);
+
+    res.render("client/pages/tours/detail", {
+        pageTitle: "Chi tiết tour"
+    })
+
+}
+
+
