@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import sequelize from "./config/database";
 import { routesClient } from "./routes/client/index.route";
 import bodyParser from "body-parser";
+import { adminRoutes } from "./routes/admin/index.route";
 
 dotenv.config();
 sequelize;
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 
 routesClient(app);
 
+adminRoutes(app);
 app.use(express.static("public"));
 
 app.listen(port, () => {
