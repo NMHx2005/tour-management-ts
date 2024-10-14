@@ -60,16 +60,18 @@ export const create = async (req: Request, res: Response) => {
       lower: true
     });
     const dataTour = {
-      title: req.body.title,
-      code: "",
-      price: parseInt(req.body.price),
-      discount: parseInt(req.body.discount),
-      stock: parseInt(req.body.stock),
-      timeStart: req.body.timeStart,
-      position: req.body.position,
-      status: req.body.status,
-      slug: slug,
-        images: JSON.stringify(req.body.images)
+        title: req.body.title,
+        code: "",
+        price: parseInt(req.body.price),
+        discount: parseInt(req.body.discount),
+        stock: parseInt(req.body.stock),
+        timeStart: req.body.timeStart,
+        position: req.body.position,
+        status: req.body.status,
+        slug: slug,
+        images: JSON.stringify(req.body.images),
+        information: req.body.information,
+        schedule: req.body.schedule,
     };
     const tour = await Tour.create(dataTour);
     const tourId = tour.dataValues.id;
