@@ -27,6 +27,9 @@ app.use(express.static("public"));
 
 app.locals.prefixAdmin = systemConfig.prefixAdmin;
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
