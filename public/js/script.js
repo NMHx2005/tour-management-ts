@@ -170,3 +170,37 @@ if(tableCart) {
     })
 }
 // Hết Vẽ tour vào giỏ hàng
+
+// Đặt tour
+const formOrder = document.querySelector("[form-order]"); // Lấy ra form thông tin khách hàng cần được gửi lên trên server
+if (formOrder) {
+  formOrder.addEventListener("submit", (event) => {
+    event.preventDefault(); // Ngăn chặn hành vi mặc định là load lại trang
+
+    const cart = JSON.parse(localStorage.getItem("cart")); // Lấy ra các sản phẩm đã được lưu trong localStorage
+
+    const dataFinal = {
+      info: {
+        fullName: formOrder.fullName.value, // Lấy ra tên của khách hàng được gửi lên
+        phone: formOrder.phone.value, // Lấy ra số điện thoại của khách hàng
+        note: formOrder.note.value, // Lấy ra ghi chú được gửi lên
+      },
+      cart: cart
+    };
+
+    fetch("/order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(dataFinal)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if(data.code == 200) {
+          console.log("OK");
+        }
+      })
+  });
+}
+// Hết đặt tour
