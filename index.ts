@@ -20,6 +20,8 @@ app.set("view engine", "pug");
 // parse application/json
 app.use(bodyParser.json());
 
+
+
 routesClient(app);
 
 adminRoutes(app);

@@ -3,6 +3,7 @@ block main
   h1(class="mb-4") #{pageTitle}
   form(
       action=`/${prefixAdmin}/tours/create`
+      enctype="multipart/form-data"
       method="POST"
     )
       div(class="form-group")
@@ -25,6 +26,16 @@ block main
           option(value="" disabled selected) -- Chọn danh mục --
           each item in categories
             option(value=item.id) #{item.title}
+      div(class="form-group")
+        label(for="images") Chọn nhiều ảnh
+        input(
+          type="file"
+          class="form-control-file"
+          id="images"
+          name="images"
+          accept="image/*"
+          multiple
+        )
       div(class="form-group")
         label(for="price") Giá
         input(
